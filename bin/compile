@@ -146,8 +146,14 @@ echo "R_INCLUDE set to '$R_INCLUDE'" | indent
 # hack for libreadline shared library version
 #cd /lib
 #whoami
-#sudo ln -sf /lib/libreadline.so.6.1 /lib/libreadline.so.5
-
+mkdir -p /app/lib
+ln -sf /lib/libreadline.so.6.1 /app/lib/libreadline.so.5
+if [ "$LD_LIBRARY_PATH" ]; then
+    LD_LIBRARY_PATH="$LD_LIBRARY_PATH":/app/lib
+else
+    LD_LIBRARY_PATH=/app/lib
+fi
+export LD_LIBRARY_PATH
 #apt-get install libreadline5-dev
 
 # copy over 'r' environment
