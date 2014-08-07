@@ -142,8 +142,10 @@ echo "R_INCLUDE set to '$R_INCLUDE'" | indent
 
 # hack for libreadline shared library version
 #cd /lib
-whoami
-sudo ln -sf /lib/libreadline.so.6.1 /lib/libreadline.so.5
+#whoami
+#sudo ln -sf /lib/libreadline.so.6.1 /lib/libreadline.so.5
+
+apt-get install libreadline5-dev
 
 # copy over 'r' environment
 mkdir -p $BUILD_DIR/.profile.d
