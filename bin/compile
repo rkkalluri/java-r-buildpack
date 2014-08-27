@@ -66,8 +66,9 @@ JDK="openjdk-${JDK_VERSION}"
 #JDK="jdk${JDK_VERSION}"
 PLATFORM="lucid"
 ARCH="x86_64"
-JDK_URL="http://${REPOSITORY_ROOT}/openjdk/${PLATFORM}/${ARCH}/${JDK}.tar.gz"
+#JDK_URL="http://${REPOSITORY_ROOT}/openjdk/${PLATFORM}/${ARCH}/${JDK}.tar.gz"
 #JDK_URL="https://s3-us-west-2.amazonaws.com/java-r-buildpack/jdk-7u51-linux-i586.tar.gz"
+JDK_URL="http://ec-gitlab-t.monsanto.com/CJCOFF/installers/blob/master/jdk-7u65-linux-i586.gz"
 echo "JDK_URL: $JDK_URL" | indent
 JAVA_HOME_TEMP="$VENDOR_DIR/$JDK"
 #: ${JAVA_HOME=}
