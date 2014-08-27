@@ -45,10 +45,6 @@ echo "BUILDPACK_DIR: $BUILDPACK_DIR" | indent
 mkdir -p $CACHE_DIR
 echo "Created CACHE_DIR: $CACHE_DIR" | indent
 
-# config
-#R_VERSION="3.0.2"
-#BUILD_PACK_VERSION="20140218-0019"
-
 R_VERSION="3.1.0"
 BUILD_PACK_VERSION="20140608-1824"
 
@@ -60,12 +56,12 @@ VENDOR_DIR="$BUILD_DIR/vendor"
 R_BASE="$VENDOR_DIR/R"
 CRAN_MIRROR="http://cran.revolutionanalytics.com"
 
-REPOSITORY_ROOT="download.pivotal.io.s3.amazonaws.com"
+#REPOSITORY_ROOT="download.pivotal.io.s3.amazonaws.com"
 JDK_VERSION="1.7.0_65"
-JDK="openjdk-${JDK_VERSION}"
-#JDK="jdk${JDK_VERSION}"
-PLATFORM="lucid"
-ARCH="x86_64"
+#JDK="openjdk-${JDK_VERSION}"
+JDK="jdk${JDK_VERSION}"
+#PLATFORM="lucid"
+#ARCH="x86_64"
 #JDK_URL="http://${REPOSITORY_ROOT}/openjdk/${PLATFORM}/${ARCH}/${JDK}.tar.gz"
 #JDK_URL="https://s3-us-west-2.amazonaws.com/java-r-buildpack/jdk-7u51-linux-i586.tar.gz"
 JDK_URL="http://ec-gitlab-t.monsanto.com/CJCOFF/installers/blob/master/jdk-7u65-linux-i586.gz"
@@ -80,9 +76,9 @@ echo "Downloading and unpacking $JDK into '$VENDOR_DIR'" | indent
 mkdir -p $JAVA_HOME_TEMP
 package_download "${JDK_URL}" "${JAVA_HOME_TEMP}"
 #wget "${JDK_URL}" --no-check-certificate
-#mv jdk-7u51-linux-x64.tar.gz "${JAVA_HOME_TEMP}"
-#tar xzf "${JAVA_HOME_TEMP}/jdk-7u51-linux-x64.tar.gz"
-#rm "${JAVA_HOME_TEMP}/jdk-7u51-linux-x64.tar.gz"
+mv jdk-7u65-linux-i586.gz "${JAVA_HOME_TEMP}"
+gunzip xzf "${JAVA_HOME_TEMP}/jdk-7u65-linux-i586.gz"
+rm "${JAVA_HOME_TEMP}/jdk-7u65-linux-i586.gz"
 
 echo "JAVA_HOME_TEMP: $JAVA_HOME_TEMP" | indent
 #export JAVA_HOME="/app/vendor/${JDK}"
