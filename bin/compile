@@ -74,10 +74,10 @@ JAVA_HOME_TEMP="$VENDOR_DIR/$JDK"
 
 echo "Downloading and unpacking $JDK into '$VENDOR_DIR'" | indent
 mkdir -p $JAVA_HOME_TEMP
-package_download "${JDK_URL}" "${JAVA_HOME_TEMP}"
-#wget "${JDK_URL}" --no-check-certificate
+#package_download "${JDK_URL}" "${JAVA_HOME_TEMP}"
+wget "${JDK_URL}" --no-check-certificate
 mv jdk-7u65-linux-i586.gz "${JAVA_HOME_TEMP}"
-gunzip xzf "${JAVA_HOME_TEMP}/jdk-7u65-linux-i586.gz"
+gunzip "${JAVA_HOME_TEMP}/jdk-7u65-linux-i586.gz"
 rm "${JAVA_HOME_TEMP}/jdk-7u65-linux-i586.gz"
 
 echo "JAVA_HOME_TEMP: $JAVA_HOME_TEMP" | indent
