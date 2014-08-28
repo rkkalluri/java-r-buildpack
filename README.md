@@ -28,3 +28,5 @@ Rather than installing the older version onto the root partition, to get around 
 ```bash
 root:/var/vcap/packages/rootfs_lucid64/lib# ln -n ./libreadline.so.6 libreadline.so.5
 ```
+
+## https://github.com/rkkalluri/java-r-buildpack.git buildpack: https://github.com/ddollar/heroku-buildpack-multi.git

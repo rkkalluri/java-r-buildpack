@@ -30,21 +30,21 @@
             <artifactId>Rserve</artifactId>
             <version>0.6-1</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>net.rforge.rjava</groupId>-->
+            <!--<artifactId>jriengine</artifactId>-->
+            <!--<version>${rjava.version}</version>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>net.rforge.rjava</groupId>
-            <artifactId>jriengine</artifactId>
-            <version>${rjava.version}</version>
+            <groupId>org.nuiton.thirdparty</groupId>
+            <artifactId>REngine</artifactId>
+            <version>0.6-1</version>
         </dependency>
-        <dependency>
-            <groupId>net.rforge.rjava</groupId>
-            <artifactId>rengine</artifactId>
-            <version>${rjava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.rforge.rjava</groupId>
-            <artifactId>jri</artifactId>
-            <version>${rjava.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>net.rforge.rjava</groupId>-->
+            <!--<artifactId>jri</artifactId>-->
+            <!--<version>${rjava.version}</version>-->
+        <!--</dependency>-->
         <!-- Jackson JSON Mapper -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
