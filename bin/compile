@@ -84,7 +84,7 @@ ls $JAVA_HOME
 
 echo "JAVA_HOME: $JAVA_HOME" | indent
 export PATH="$JAVA_HOME/bin:$PATH"
-java -version
+
 export JAVA_CPPFLAGS="-I$JAVA_HOME/include -I$JAVA_HOME/include/linux"
 echo "JAVA_CPPFLAGS: $JAVA_CPPFLAGS" | indent
 
