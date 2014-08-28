@@ -59,7 +59,7 @@ CRAN_MIRROR="http://cran.revolutionanalytics.com"
 REPOSITORY_ROOT="http://ec-gitlab-t.monsanto.com/CJCOFF/installers/raw/master"
 JDK_VERSION="7u65"
 #JDK="openjdk-${JDK_VERSION}"
-JDK="jdk${JDK_VERSION}"
+JDK="jdk-7u65-linux-x64"
 #PLATFORM="lucid"
 ARCH="x64"
 
@@ -75,11 +75,11 @@ wget "${JDK_URL}" --no-check-certificate
 mv jdk-7u65-linux-${ARCH}.gz "${JAVA_HOME_TEMP}"
 
 gunzip "${JAVA_HOME_TEMP}/jdk-7u65-linux-x64.gz"
-rm "${JAVA_HOME_TEMP}/jdk-7u65-linux-x64.gz"
 
 echo "JAVA_HOME_TEMP: $JAVA_HOME_TEMP" | indent
 export JAVA_HOME=$JAVA_HOME_TEMP
 echo "JAVA_HOME: $JAVA_HOME" | indent
+java -version
 export JAVA_CPPFLAGS="-I$JAVA_HOME/include -I$JAVA_HOME/include/linux"
 echo "JAVA_CPPFLAGS: $JAVA_CPPFLAGS" | indent
 
