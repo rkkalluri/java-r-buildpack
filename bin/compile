@@ -77,7 +77,9 @@ mkdir -p $JAVA_HOME_TEMP
 #package_download "${JDK_URL}" "${JAVA_HOME_TEMP}"
 wget "${JDK_URL}" --no-check-certificate
 mv jdk-7u65-linux-${ARCH}.tar.gz "${JAVA_HOME_TEMP}"
-tar xzf "${JAVA_HOME_TEMP}/jdk-7u65-linux-x64.tar.gz"
+#unzip "${JAVA_HOME_TEMP}/jdk-7u65-linux-x64.tar.gz"
+file "${JAVA_HOME_TEMP}/jdk-7u65-linux-x64.tar.gz"
+tar xvf "${JAVA_HOME_TEMP}/jdk-7u65-linux-x64.tar.gz"
 rm "${JAVA_HOME_TEMP}/jdk-7u65-linux-x64.tar.gz"
 
 echo "JAVA_HOME_TEMP: $JAVA_HOME_TEMP" | indent
