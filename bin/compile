@@ -58,6 +58,7 @@ CRAN_MIRROR="http://cran.revolutionanalytics.com"
 
 REPOSITORY_ROOT="http://ec-gitlab-t.monsanto.com/CJCOFF/installers/raw/master"
 JDK_VERSION="7u65"
+JAVA_VERSION="1.7.0_65"
 ARCH="x64"
 JDK="jdk-${JDK_VERSION}-linux-${ARCH}"
 
@@ -68,11 +69,12 @@ echo "Downloading and unpacking $JDK into '$VENDOR_DIR'" | indent
 
 wget -P ${VENDOR_DIR} --no-check-certificate ${JDK_URL}
 
-ls ${VENDOR_DIR}
 
 gunzip "${VENDOR_DIR}/${JDK}.gz"
 
-export JAVA_HOME=${VENDOR_DIR}/$JDK
+tar xf "${VENDOR_DIR}/${JDK}"
+
+export JAVA_HOME=${VENDOR_DIR}/jdk${JAVA_VERSION}
 echo "JAVA_HOME: $JAVA_HOME" | indent
 export PATH="$JAVA_HOME/bin:$PATH"
 java -version
