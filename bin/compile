@@ -66,8 +66,7 @@ echo "JDK_URL: $JDK_URL" | indent
 
 echo "Downloading and unpacking $JDK into '$VENDOR_DIR'" | indent
 
-wget "${JDK_URL}" --no-check-certificate
-mv ${JDK}.gz "${VENDOR_DIR}"
+wget -P ${VENDOR_DIR} --no-check-certificate ${JDK_URL}
 
 ls ${VENDOR_DIR}
 
