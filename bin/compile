@@ -58,9 +58,7 @@ CRAN_MIRROR="http://cran.revolutionanalytics.com"
 
 REPOSITORY_ROOT="http://ec-gitlab-t.monsanto.com/CJCOFF/installers/raw/master"
 JDK_VERSION="7u65"
-#JDK="openjdk-${JDK_VERSION}"
 JDK="jdk-7u65-linux-x64"
-#PLATFORM="lucid"
 ARCH="x64"
 
 JDK_URL="${REPOSITORY_ROOT}/jdk-7u65-linux-${ARCH}.gz"
@@ -70,6 +68,8 @@ echo "Downloading and unpacking $JDK into '$VENDOR_DIR'" | indent
 
 wget "${JDK_URL}" --no-check-certificate
 mv jdk-7u65-linux-${ARCH}.gz "$VENDOR_DIR"
+
+ls ${VENDOR_DIR}
 
 gunzip "${VENDOR_DIR}/jdk-7u65-linux-x64.gz"
 
