@@ -56,7 +56,7 @@ VENDOR_DIR="$BUILD_DIR/vendor"
 R_BASE="$VENDOR_DIR/R"
 CRAN_MIRROR="http://cran.revolutionanalytics.com"
 
-REPOSITORY_ROOT="http://ec-gitlab-t.monsanto.com/CJCOFF/installers/blob/master"
+REPOSITORY_ROOT="http://ec-gitlab-t.monsanto.com/CJCOFF/installers/raw/master"
 JDK_VERSION="7u65"
 #JDK="openjdk-${JDK_VERSION}"
 JDK="jdk${JDK_VERSION}"
@@ -66,37 +66,22 @@ ARCH="x64"
 JDK_URL="${REPOSITORY_ROOT}/jdk-7u65-linux-${ARCH}.gz"
 echo "JDK_URL: $JDK_URL" | indent
 JAVA_HOME_TEMP="$VENDOR_DIR/$JDK"
-#: ${JAVA_HOME=}
-#: ${JAVA_CPPFLAGS=~autodetect~}
-#: ${JAVA_LD_LIBRARY_PATH=~autodetect~}
-#: ${JAVA_LIBS=~autodetect~}
+
 
 echo "Downloading and unpacking $JDK into '$VENDOR_DIR'" | indent
 mkdir -p $JAVA_HOME_TEMP
-#package_download "${JDK_URL}" "${JAVA_HOME_TEMP}"
+
 wget "${JDK_URL}" --no-check-certificate
 mv jdk-7u65-linux-${ARCH}.gz "${JAVA_HOME_TEMP}"
-#unzip "${JAVA_HOME_TEMP}/jdk-7u65-linux-x64.tar.gz"
-file "${JAVA_HOME_TEMP}/jdk-7u65-linux-x64.gz"
+
 gunzip "${JAVA_HOME_TEMP}/jdk-7u65-linux-x64.gz"
 rm "${JAVA_HOME_TEMP}/jdk-7u65-linux-x64.gz"
 
 echo "JAVA_HOME_TEMP: $JAVA_HOME_TEMP" | indent
-#export JAVA_HOME="/app/vendor/${JDK}"
 export JAVA_HOME=$JAVA_HOME_TEMP
 echo "JAVA_HOME: $JAVA_HOME" | indent
 export JAVA_CPPFLAGS="-I$JAVA_HOME/include -I$JAVA_HOME/include/linux"
 echo "JAVA_CPPFLAGS: $JAVA_CPPFLAGS" | indent
-
-#mkdir -p $JAVA_HOME
-#echo "Copying vendored ${JAVA_HOME_TEMP} files into ${JAVA_HOME}" | indent
-#cp -R $JAVA_HOME_TEMP/* $JAVA_HOME
-
-#if [ -f "/usr/bin/java" ]; then
-#     echo "Java found on path" | indent
-#else
-    #ln -fs $JAVA_HOME/bin/java /usr/bin/java
-#fi
 
 # vendor R into the slug
 echo "Vendoring R $R_VERSION" | indent
@@ -142,8 +127,6 @@ echo "R_HOME set to '$R_HOME'" | indent
 echo "R_INCLUDE set to '$R_INCLUDE'" | indent
 
 # hack for libreadline shared library version
-#cd /lib
-#whoami
 mkdir -p /app/lib
 ln -sf /lib/libreadline.so.6.1 /app/lib/libreadline.so.5
 if [ "$LD_LIBRARY_PATH" ]; then
@@ -152,7 +135,6 @@ else
     LD_LIBRARY_PATH=/app/lib
 fi
 export LD_LIBRARY_PATH
-#apt-get install libreadline5-dev
 
 # copy over 'r' environment
 mkdir -p $BUILD_DIR/.profile.d
