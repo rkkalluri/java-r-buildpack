@@ -56,35 +56,19 @@ VENDOR_DIR="$BUILD_DIR/vendor"
 R_BASE="$VENDOR_DIR/R"
 CRAN_MIRROR="http://cran.revolutionanalytics.com"
 
-REPOSITORY_ROOT="http://ec-gitlab-t.monsanto.com/CJCOFF/installers/raw/master"
-JDK_VERSION="7u65"
-JAVA_VERSION="1.7.0_65"
-ARCH="x64"
-JDK="jdk-${JDK_VERSION}-linux-${ARCH}"
 
-JDK_URL="${REPOSITORY_ROOT}/${JDK}.gz"
+JDK_VERSION="1.7.0_65"
+JDK="jdk${JDK_VERSION}"
+JDK_URL="http://ec-gitlab-t.monsanto.com/CJCOFF/installers/raw/master/jdk-7u65-linux-x64.gz"
 echo "JDK_URL: $JDK_URL" | indent
+JAVA_HOME_TEMP="$VENDOR_DIR/$JDK"
 
 echo "Downloading and unpacking $JDK into '$VENDOR_DIR'" | indent
+package_download "${JDK_URL}" "${VENDOR_DIR}"
 
-wget -P ${VENDOR_DIR} --no-check-certificate ${JDK_URL}
-
-
-gunzip "${VENDOR_DIR}/${JDK}.gz"
-
-ls ${VENDOR_DIR}
-
-tar xvf "${VENDOR_DIR}/${JDK}"
-
-ls ${VENDOR_DIR}
-
-export JAVA_HOME=${VENDOR_DIR}/jdk${JAVA_VERSION}
-
-ls $JAVA_HOME
-
+echo "JAVA_HOME_TEMP: $JAVA_HOME_TEMP" | indent
+export JAVA_HOME=$JAVA_HOME_TEMP
 echo "JAVA_HOME: $JAVA_HOME" | indent
-export PATH="$JAVA_HOME/bin:$PATH"
-
 export JAVA_CPPFLAGS="-I$JAVA_HOME/include -I$JAVA_HOME/include/linux"
 echo "JAVA_CPPFLAGS: $JAVA_CPPFLAGS" | indent
 
