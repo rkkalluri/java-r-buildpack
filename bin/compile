@@ -72,7 +72,11 @@ wget -P ${VENDOR_DIR} --no-check-certificate ${JDK_URL}
 
 gunzip "${VENDOR_DIR}/${JDK}.gz"
 
-tar xf "${VENDOR_DIR}/${JDK}"
+ls ${VENDOR_DIR}
+
+tar xvf "${VENDOR_DIR}/${JDK}"
+
+ls ${VENDOR_DIR}
 
 export JAVA_HOME=${VENDOR_DIR}/jdk${JAVA_VERSION}
 
