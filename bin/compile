@@ -67,14 +67,15 @@ JDK_URL="${REPOSITORY_ROOT}/jdk-7u65-linux-${ARCH}.gz"
 echo "JDK_URL: $JDK_URL" | indent
 JAVA_HOME_TEMP="$VENDOR_DIR/$JDK"
 
+#/tmp/staged/app/vendor/jdk-7u65-linux-x64
 
 echo "Downloading and unpacking $JDK into '$VENDOR_DIR'" | indent
 mkdir -p $JAVA_HOME_TEMP
 
 wget "${JDK_URL}" --no-check-certificate
-mv jdk-7u65-linux-${ARCH}.gz "${JAVA_HOME_TEMP}"
+mv jdk-7u65-linux-${ARCH}.gz "$VENDOR_DIR"
 
-gunzip "${JAVA_HOME_TEMP}/jdk-7u65-linux-x64.gz"
+gunzip "${VENDOR_DIR}/jdk-7u65-linux-x64.gz"
 
 echo "JAVA_HOME_TEMP: $JAVA_HOME_TEMP" | indent
 export JAVA_HOME=$JAVA_HOME_TEMP
